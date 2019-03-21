@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-west-2"
-  shared_credentials_file = "~/.aws/credentials"
-}
 resource "aws_security_group" "jenkins-sg" {
   name = "jenkins-sg"
   description = "Jenkins security group"
@@ -30,7 +26,7 @@ resource "aws_instance" "node" {
   user_data = <<EOF
   #!/bin/bash
   docker run -d -p 8080:8080 --name jenkins jenkins/jenkins:lts
-  EOF
+EOF
   tags = {
     Name = "docker-node"
   }
@@ -41,5 +37,3 @@ resource "aws_ecr_repository" "devops-docker" {
     Name = "docker-registry"
   }
 }
-
-
