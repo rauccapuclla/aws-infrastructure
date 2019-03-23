@@ -53,7 +53,7 @@ resource "aws_instance" "jenkins" {
   security_groups = ["${aws_security_group.jenkins-sg.name}"]
   user_data = <<EOF
   #!/bin/bash
-  docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkinsci/jenkins:lts
+  docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins rauccapuclla/jenkins-docker:latest
 EOF
   tags = {
     Name = "jenkins-node"
