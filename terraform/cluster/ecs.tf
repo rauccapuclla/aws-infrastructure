@@ -47,3 +47,10 @@ resource "aws_ecs_service" "main" {
     "aws_alb_listener.front_end",
   ]
 }
+
+resource "aws_ecr_repository" "devops-docker" {
+  name = "devops-docker"
+  tags = {
+    Name = "docker-registry"
+  }
+}
