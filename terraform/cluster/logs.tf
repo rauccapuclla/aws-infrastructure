@@ -1,6 +1,6 @@
 resource "aws_cloudwatch_log_group" "log_group" {
   name              = "/ecs/app"
-  retention_in_days = 30
+  retention_in_days = 7
 
   tags {
     Name = "app-log-group"
