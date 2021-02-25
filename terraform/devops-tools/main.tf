@@ -29,6 +29,13 @@ resource "aws_instance" "jenkins" {
   user_data = <<EOF
   #!/bin/bash
   docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins:lts
+  yum -y install curl git unzip
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip awscliv2.zip
+  ./aws/install
+  curl -L "https://github.com/docker/compose/releases/download/1.28.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  chmod +x /usr/local/bin/docker-compose
+  cd /tmp && git clone https://github.com/rauccapuclla/devops-docker.git
 EOF
   tags = {
     Name = "jenkins-node"
