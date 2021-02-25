@@ -28,7 +28,7 @@ resource "aws_instance" "jenkins" {
   security_groups = ["${aws_security_group.allow-ingress-traffic.name}"]
   user_data = <<EOF
   #!/bin/bash
-  docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins rauccapuclla/jenkins-docker:latest
+  docker run -d -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock --name jenkins jenkins/jenkins:lts
 EOF
   tags = {
     Name = "jenkins-node"
