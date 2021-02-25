@@ -48,9 +48,9 @@ resource "aws_ecs_service" "main" {
   ]
 }
 
-/* resource "aws_ecr_repository" "devops-docker" {
+resource "aws_ecr_repository" "devops-docker" {
   name = "devops-docker"
   tags = {
     Name = "docker-registry"
   }
-} */
+}
